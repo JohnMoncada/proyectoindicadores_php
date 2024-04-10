@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 class Usuario{
     //atributos, el nombre de las variables deben tener el simbolo $ante el nombre
     var $email;  //si antepongo el var me esta diciendo que email es un atributo, queda como privado
@@ -33,30 +32,4 @@ class Usuario{
 
 
 
-=======
-  class Usuario{
-  	var $email, $contrasena;
-
-  	function __construct($email,$contrasena){
-  		$this->email = $email;
-  		$this->contrasena = $contrasena;
-  	}
-
-  	function setEmail($email){
-  		$this->email = $email;
-  	}
-
-  	function getEmail(){
-  		return $this->email;
-  	} 
-
-  	function setContrasena($contrasena){
-  		$this->contrasena = $contrasena;
-  	}
-
-  	function getContrasena(){
-  		return $this->contrasena;
-  	}    		
-  }
->>>>>>> 0228b2ebf506de452616bf8edcc3b06c3eb51884
 ?>

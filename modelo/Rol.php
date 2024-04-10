@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 class Rol{
     //atributos, el nombre de las variables deben tener el simbolo $ante el nombre
     var $id;  //si antepongo el var me esta diciendo que id es un atributo, queda como privado
@@ -33,31 +32,4 @@ class Rol{
 
 
 
-=======
-    class Rol{
-        var $id;
-        var $nombre;
-
-        function __construct($id, $nombre){
-            $this->id = $id;
-            $this->nombre = $nombre;
-        }
-
-        function setId($id){
-            $this->id = $id;
-        }
-
-        function getId(){
-            return $this->id;
-        }
-
-        function setNombre($nombre){
-            $this->nombre = $nombre;
-        }
-
-        function getNombre(){
-        return $this->nombre;
-        }
-    }
->>>>>>> 0228b2ebf506de452616bf8edcc3b06c3eb51884
 ?>
