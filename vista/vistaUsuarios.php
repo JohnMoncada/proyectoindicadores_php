@@ -3,10 +3,39 @@ include '../control/ControlUsuario.php';
 include '../control/ControlConexion.php';
 include '../control/configBd.php';
 include '../modelo/Usuario.php';
-
+$boton="";
+$email="";
+$contrasena="";
 $objControlUsuario = new ControlUsuario(null);
 $arregloUsuario=$objControlUsuario->listar();
 //var_dump($arregloUsuario);  //var_dump  para mostrar los arreglos
+$boton= $_POST['boton'] ?? "";
+switch ($boton) {
+	case 'Guardar':
+		$email=$_POST['txtEmail'];
+		$contrasena=$_POST['txtContrasena'];
+		$objUsuario = new Usuario($email,$contrasena);
+		$objControlUsuario = new ControlUsuario($objUsuario);
+		$objControlUsuario->guardar();
+		header('Location: vistaUsuarios.php'); //para actualizar la pagina 
+
+		break;
+	case 'Consultar':
+		# code...
+		break;
+	case 'Modificar':
+		# code...
+		break;
+	case 'Borrar':
+		# code...
+		break;
+	default:
+		# code...
+		break;
+}
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -215,7 +244,7 @@ $arregloUsuario=$objControlUsuario->listar();
 	}
 	/* Modal styles */
 	.modal .modal-dialog {
-		max-width: 400px;
+		max-width: 500px;
 	}
 	.modal .modal-header, .modal .modal-body, .modal .modal-footer {
 		padding: 20px 30px;
@@ -283,8 +312,7 @@ $arregloUsuario=$objControlUsuario->listar();
 							<h2>Manage <b>Employees</b></h2>
 						</div>
 						<div class="col-sm-6">
-							<a href="#crudModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Gestionar Uusuarios</span></a>
-							<a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						
+							<a href="#crudModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Gestionar Usuarios</span></a>
 						</div>
 					</div>
 				</div>
@@ -341,38 +369,35 @@ $arregloUsuario=$objControlUsuario->listar();
 	<div id="crudModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form>
+				<form id="frmUsuarios" method="post" action="vistaUsuarios.php"> //action para decir a que pagina quiero enviarle los datos por metodo get
 					<div class="modal-header">						
-						<h4 class="modal-title">Add Employee</h4>
+						<h4 class="modal-title">Gestion Usuarios</h4>
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 					</div>
 					<div class="modal-body">					
 						<div class="form-group">
-							<label>Name</label>
-							<input type="text" class="form-control" required>
-						</div>
-						<div class="form-group">
 							<label>Email</label>
-							<input type="email" class="form-control" required>
+							<input type="text" class="form-control" id="txtEmail" name="txtEmail"  required>
 						</div>
 						<div class="form-group">
-							<label>Address</label>
-							<textarea class="form-control" required></textarea>
+							<label>contraseña</label>
+							<input type="texto" class="form-control" id="txtContrasena" name="txtContrasena" >
 						</div>
 						<div class="form-group">
-							<label>Phone</label>
-							<input type="text" class="form-control" required>
-						</div>					
+						<input type="submit" class="btn btn-success" id="btnGuardar" name="boton" value="Guardar">
+						<input type="submit" class="btn btn-success" id="btnConsultar" name="boton" value="Consultar">
+						<input type="submit" class="btn btn-warning" id="btnModificar" name="boton" value="Modificar">
+						<input type="submit" class="btn btn-danger" id="btnBorrar" name="boton" value="Borrar">
+						</div>
 					</div>
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-						<input type="submit" class="btn btn-success" value="Add">
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
-	<!-- Edit Modal HTML -->
+	<!-- Edit Modal HTML boton -->
 	<div id="editEmployeeModal" class="modal fade">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -402,27 +427,6 @@ $arregloUsuario=$objControlUsuario->listar();
 					<div class="modal-footer">
 						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
 						<input type="submit" class="btn btn-info" value="Save">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-	<!-- Delete Modal HTML -->
-	<div id="deleteEmployeeModal" class="modal fade">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<form>
-					<div class="modal-header">						
-						<h4 class="modal-title">Delete Employee</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					</div>
-					<div class="modal-body">					
-						<p>Are you sure you want to delete these Records?</p>
-						<p class="text-warning"><small>This action cannot be undone.</small></p>
-					</div>
-					<div class="modal-footer">
-						<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-						<input type="submit" class="btn btn-danger" value="Delete">
 					</div>
 				</form>
 			</div>

@@ -6,7 +6,23 @@ class ControlUsuario{
     }
 
     function listar(){
-       //pendiente
+        $comandoSql = "SELECT * FROM usuario";
+        $objControlConexion = new ControlConexion();
+        $objControlConexion->abrirBd($GLOBALS['serv'], $GLOBALS['usua'], $GLOBALS['pass'], $GLOBALS['bdat'], $GLOBALS['port']);
+        $recordSet = $objControlConexion->ejecutarSelect($comandoSql);
+        if (mysqli_num_rows($recordSet) > 0) {
+            $arregloUsuarios = array();
+            $i = 0;
+            while($row = $recordSet->fetch_array(MYSQLI_BOTH)){
+                $objUsuario = new Usuario("","");
+                $objUsuario->setEmail($row['email']);
+                $objUsuario->setContrasena($row['contrasena']);
+                $arregloUsuarios[$i] = $objUsuario;
+                $i++;
+            }
+        }
+        $objControlConexion->cerrarBd();
+        return $arregloUsuarios;
     }   
     
     function consultar(){
