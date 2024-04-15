@@ -1,40 +1,3 @@
-<?php
-include '../control/ControlUsuario.php';
-include '../control/ControlConexion.php';
-include '../control/configBd.php';
-include '../modelo/Usuario.php';
-$boton="";
-$email="";
-$contrasena="";
-$objControlUsuario = new ControlUsuario(null);
-$arregloUsuario=$objControlUsuario->listar();
-//var_dump($arregloUsuario);  //var_dump  para mostrar los arreglos
-$boton= $_POST['boton'] ?? "";
-switch ($boton) {
-	case 'Guardar':
-		$email=$_POST['txtEmail'];
-		$contrasena=$_POST['txtContrasena'];
-		$objUsuario = new Usuario($email,$contrasena);
-		$objControlUsuario = new ControlUsuario($objUsuario);
-		$objControlUsuario->guardar();
-		header('Location: vistaUsuarios.php'); //para actualizar la pagina 
-
-		break;
-	case 'Consultar':
-		# code...
-		break;
-	case 'Modificar':
-		# code...
-		break;
-	case 'Borrar':
-		# code...
-		break;
-	default:
-		# code...
-		break;
-}
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -307,7 +270,7 @@ switch ($boton) {
 				<div class="table-title">
 					<div class="row">
 						<div class="col-sm-6">
-							<h2>Gestion <b>Usuarios</b></h2>
+							<h2>Tipo <b>Indicador</b></h2>
 						</div>
 						<div class="col-sm-6">
 							<a href="#crudModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Gestionar Usuarios</span></a>
