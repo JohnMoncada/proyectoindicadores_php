@@ -1,0 +1,56 @@
+.mi-boton {
+    background-color: #4CAF50; /* Color de fondo verde */
+    border: none; /* Sin borde */
+    color: white; /* Color del texto */
+    padding: 15px 32px; /* Espaciado interior */
+    text-align: center; /* Alineación del texto */
+    text-decoration: none; /* Sin subrayado */
+    display: inline-block; /* Mostrar como bloque en línea */
+    font-size: 16px; /* Tamaño de fuente */
+    margin: 4px 2px; /* Margen exterior */
+    cursor: pointer; /* Cursor al pasar el ratón */
+    height: 300px;
+    
+}
+.contenedor {
+    display: flex; /* Utiliza flexbox */
+    justify-content: space-evenly; /* Distribuye los elementos equitativamente con espaciado alrededor */
+    align-items: center; /* Centra verticalmente los elementos */
+    height: 100vh; /* Altura del contenedor para ocupar toda la altura de la ventana */
+    margin: 10px;
+}
+
+.pilar {
+    flex: 0; /* Toma el mismo espacio en el contenedor */
+    text-align: center; /* Centra el contenido horizontalmente */
+    margin: -260px;
+}
+
+.rectangulo-base {
+    width: 900px; /* Ancho del rectángulo */
+    height: 20px; /* Altura del rectángulo */
+    background-color: #4CAF50; /* Color de fondo */
+    margin: -150px auto 0; /* Margen superior reducido */
+    padding-bottom: 10px; /* Reducir el relleno inferior */
+}
+
+
+.background {
+    background-color: #cecdb0;
+}
+.card-img-top {
+    width: 70px;   /* Ancho de la imagen */
+    height: 70px;  /* Alto de la imagen */
+    object-fit: contain;
+    margin: 70px auto;
+}
+
+
+.rectangulo-rojo {
+    position: absolute;       /* Posición absoluta para alinear */
+    top: 10px;               /* Distancia desde la parte superior */
+    right: 0px;             /* Distancia desde la parte derecha */
+    width: 50px;             /* Ancho del rectángulo */
+    height: 20px;            /* Altura del rectángulo */
+    z-index: 1;              /* Asegura que esté por encima del contenido */
+}
